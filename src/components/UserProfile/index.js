@@ -57,63 +57,80 @@ class UserProfile extends Component {
     const {userProfileList} = this.state
 
     return (
-      <div className="my-profile-responsive">
-        <div className="my-profile-container">
-          <div className="top-profile-container">
+      <div className="user-profile-main-con">
+        <div className="mobile-view">
+          <h1 className="username-mobile">{userProfileList.user_name}</h1>
+          <div className="image-followers-following-posts-container">
             <img
               src={userProfileList.profile_pic}
               alt="user profile"
-              className="user-profile-pic"
+              className="profilePic"
             />
-            <div className="my-profile-name-container">
-              <h1 className="my-profile-head">{userProfileList.user_name}</h1>
-              <div className="user-profile-followers-container">
-                <p className="my-profile-common">
-                  {userProfileList.posts_count} posts
-                </p>
-                <p className="my-profile-common">
-                  {userProfileList.followers_count} followers
-                </p>
-                <p className="my-profile-common">
-                  {userProfileList.following_count} following
-                </p>
-              </div>
-              <p className="my-profile-name">{userProfileList.user_id}</p>
-              <p className="my-profile-bio">{userProfileList.user_bio}</p>
+            <div className="desktop">
+              <p className="username-desktop">{userProfileList.user_name}</p>
+              <ul className="subCons-container">
+                <li className="subCon">
+                  <p className="count">{userProfileList.posts_count}</p>
+                  <p className="count-heading">posts</p>
+                </li>
+                <li className="subCon">
+                  <p className="count">{userProfileList.followers_count}</p>
+                  <p className="count-heading">followers</p>
+                </li>
+                <li className="subCon">
+                  <p className="count">{userProfileList.following_count}</p>
+                  <p className="count-heading">following</p>
+                </li>
+              </ul>
+              <p className="username-main-desktop">{userProfileList.user_id}</p>
+              <p className="bio-desktop">{userProfileList.user_bio}</p>
             </div>
           </div>
-          <ul className="my-profile-user-stories-container">
+          <p className="username-main-mobile">{userProfileList.user_id}</p>
+          <p className="bio-mobile">{userProfileList.user_bio}</p>
+        </div>
+
+        <div className="desktop-view-styling">
+          <ul className="story-container">
             {userProfileList.stories.map(eachItem => (
-              <li key={eachItem.id} className="my-profile-story-item">
+              <li key={eachItem.id} storyDetails={eachItem}>
                 <img
                   src={eachItem.image}
                   alt="user story"
-                  className="my-profile-story-img"
+                  className="storyImage"
                 />
               </li>
             ))}
           </ul>
-          <hr />
-          <div className="my-grid-container">
-            <BsGrid3X3 size="24px" />
-            <h1 className="my-grid-text">Posts</h1>
+          <hr className="line" />
+          <div className="icon-heading-con">
+            <BsGrid3X3 className="posts-icon" />
+            <h1 className="posts-heading">Posts</h1>
           </div>
           {userProfileList.posts.length > 0 ? (
-            <ul className="my-profile-post-list">
-              {userProfileList.posts.map(eachItem => (
-                <li key={eachItem.id} className="my-profile-post-list-item">
-                  <img
-                    src={eachItem.image}
-                    alt="user post"
-                    className="my-profile-posts-img"
-                  />
-                </li>
-              ))}
-            </ul>
+            <div className="posts-container">
+              <ul className="ul">
+                {userProfileList.posts.map(eachItem => (
+                  <li
+                    key={eachItem.id}
+                    postsDetails={eachItem}
+                    className="list-item"
+                  >
+                    <img
+                      src={eachItem.image}
+                      alt="user post"
+                      className="post-image"
+                    />
+                  </li>
+                ))}
+              </ul>
+            </div>
           ) : (
-            <div>
-              <BiCamera />
-              <h1>No Posts</h1>
+            <div className="no-posts-display">
+              <div className="icon-con">
+                <BiCamera className="no-posts-icon" />
+              </div>
+              <h1 className="no-posts-para">No Posts</h1>
             </div>
           )}
         </div>

@@ -51,11 +51,13 @@ class UsersPostsCard extends Component {
         key={usersPostsDetails.post_id}
       >
         <div className="UsersPostsCard-profile">
-          <img
-            src={usersPostsDetails.profile_pic}
-            alt="post author profile"
-            className="UsersPostsCard-profile-img"
-          />
+          <div className="img-container-profile-pic">
+            <img
+              src={usersPostsDetails.profile_pic}
+              alt="post author profile"
+              className="UsersPostsCard-profile-img"
+            />
+          </div>
 
           <Link
             to={`/users/${usersPostsDetails.user_id}`}

@@ -95,7 +95,7 @@
     flex-direction: column;
     align-items: center;
   }
-  .home-line {
+  .hr-line {
     display: none;
   }
   .search-fail-heading {

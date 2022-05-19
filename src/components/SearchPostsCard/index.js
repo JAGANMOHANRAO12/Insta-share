@@ -56,11 +56,13 @@ class SearchPostsCard extends Component {
         key={searchPostsDetails.post_id}
       >
         <div className="UsersPostsCard-profile">
-          <img
-            src={searchPostsDetails.profile_pic}
-            alt="post author profile"
-            className="UsersPostsCard-profile-img"
-          />
+          <div className="img-container-profile-pic">
+            <img
+              src={searchPostsDetails.profile_pic}
+              alt="post author profile"
+              className="UsersPostsCard-profile-img"
+            />
+          </div>
 
           <Link
             to={`/users/${searchPostsDetails.user_id}`}

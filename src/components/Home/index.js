@@ -135,7 +135,7 @@ class Home extends Component {
         ) : (
           <div className="home-container">
             <InstaStories />
-            <hr className="home-line" />
+            <hr className="hr-line" />
             <InstaPosts />
           </div>
         )}

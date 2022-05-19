@@ -40,9 +40,10 @@ class Header extends Component {
   }
 
   render() {
-    const {searchInput} = this.props
+    const {searchInput, match} = this.props
     const {isDisplayNavContainer, isDisplaySearchContainer} = this.state
-
+    const {path} = match
+    const activeBtn = 'active-nav-name'
     return (
       <>
         <nav className="nav-container">
@@ -89,13 +90,30 @@ class Header extends Component {
             <ul className="nav-list">
               <Link to="/" className="nav-link">
                 <li>
-                  <p className="nav-name">Home</p>
+                  <p
+                    className={`nav-name ${
+                      path === '/' && isDisplaySearchContainer === false
+                        ? activeBtn
+                        : null
+                    }`}
+                  >
+                    Home
+                  </p>
                 </li>
               </Link>
 
               <Link to="/my-profile" className="nav-link">
                 <li>
-                  <p className="nav-name">Profile</p>
+                  <p
+                    className={`nav-name ${
+                      path === '/my-profile' &&
+                      isDisplaySearchContainer === false
+                        ? activeBtn
+                        : null
+                    }`}
+                  >
+                    Profile
+                  </p>
                 </li>
               </Link>
 
@@ -115,7 +133,15 @@ class Header extends Component {
           <ul className="nav-list small-list2">
             <Link to="/" className="nav-link">
               <li>
-                <p className="nav-name">Home</p>
+                <p
+                  className={`nav-name ${
+                    path === '/' && isDisplaySearchContainer === false
+                      ? activeBtn
+                      : null
+                  }`}
+                >
+                  Home
+                </p>
               </li>
             </Link>
             <li>
@@ -124,12 +150,26 @@ class Header extends Component {
                 className="search-tab-button btn"
                 onClick={this.onClickSearchTab}
               >
-                <p className="nav-name">Search</p>
+                <p
+                  className={`nav-name ${
+                    isDisplaySearchContainer ? activeBtn : null
+                  }`}
+                >
+                  Search
+                </p>
               </button>
             </li>
             <Link to="/my-profile" className="nav-link">
               <li>
-                <p className="nav-name">Profile</p>
+                <p
+                  className={`nav-name ${
+                    path === '/my-profile' && isDisplaySearchContainer === false
+                      ? activeBtn
+                      : null
+                  }`}
+                >
+                  Profile
+                </p>
               </li>
             </Link>
             <li>

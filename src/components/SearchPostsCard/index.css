@@ -22,10 +22,26 @@
   border-radius: 4px 4px 0px 0px;
 }
 
+.img-container-profile-pic {
+  background-image: linear-gradient(295deg, #e20337, #c60188, #7700c3);
+  padding: 1px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 30px;
+  margin-right: 10px;
+  margin-left: 10px;
+  width: 40px;
+  height: 40px;
+}
 .UsersPostsCard-profile-img {
-  height: 28px;
-  width: 28px;
-  border-radius: 100px;
+  width: 36px;
+  height: 36px;
+  padding: 1px;
+  background-color: white;
+  border-radius: 36px;
   margin-left: 15px;
   margin-right: 15px;
 }

@@ -3,7 +3,9 @@ import Cookies from 'js-cookie'
 import Loader from 'react-loader-spinner'
 import {BsGrid3X3} from 'react-icons/bs'
 import {BiCamera} from 'react-icons/bi'
+
 import Header from '../Header'
+
 import SomethingWentWrongCard from '../SomethingWentWrongCard'
 import './index.css'
 
@@ -52,63 +54,80 @@ class MyProfile extends Component {
   renderSuccessViewOfMyProfile = () => {
     const {myProfileList} = this.state
     return (
-      <div className="my-profile-responsive">
-        <div className="my-profile-container">
-          <div className="top-profile-container">
+      <div className="user-profile-main-con">
+        <div className="mobile-view">
+          <h1 className="username-mobile">{myProfileList.user_name}</h1>
+          <div className="image-followers-following-posts-container">
             <img
               src={myProfileList.profile_pic}
               alt="my profile"
-              className="my-profile-pic"
+              className="profilePic"
             />
-            <div className="my-profile-name-container">
-              <h1 className="my-profile-head">{myProfileList.user_name}</h1>
-              <div className="my-profile-followers-container">
-                <p className="my-profile-common">
-                  {myProfileList.posts_count} posts
-                </p>
-                <p className="my-profile-common">
-                  {myProfileList.followers_count} followers
-                </p>
-                <p className="my-profile-common">
-                  {myProfileList.following_count} following
-                </p>
-              </div>
-              <p className="my-profile-name">{myProfileList.user_id}</p>
-              <p className="my-profile-bio">{myProfileList.user_bio}</p>
+            <div className="desktop">
+              <p className="username-desktop">{myProfileList.user_name}</p>
+              <ul className="subCons-container">
+                <li className="subCon">
+                  <p className="count">{myProfileList.posts_count}</p>
+                  <p className="count-heading">posts</p>
+                </li>
+                <li className="subCon">
+                  <p className="count">{myProfileList.followers_count}</p>
+                  <p className="count-heading">followers</p>
+                </li>
+                <li className="subCon">
+                  <p className="count">{myProfileList.following_count}</p>
+                  <p className="count-heading">following</p>
+                </li>
+              </ul>
+              <p className="username-main-desktop">{myProfileList.user_id}</p>
+              <p className="bio-desktop">{myProfileList.user_bio}</p>
             </div>
           </div>
-          <ul className="my-profile-user-stories-container">
+          <p className="username-main-mobile">{myProfileList.user_id}</p>
+          <p className="bio-mobile">{myProfileList.user_bio}</p>
+        </div>
+
+        <div className="desktop-view-styling">
+          <ul className="story-container">
             {myProfileList.stories.map(eachItem => (
-              <li key={eachItem.id} className="my-profile-story-item">
+              <li key={eachItem.id} storyDetails={eachItem}>
                 <img
                   src={eachItem.image}
                   alt="my story"
-                  className="my-profile-story-img"
+                  className="storyImage"
                 />
               </li>
             ))}
           </ul>
-          <hr />
-          <div className="my-grid-container">
-            <BsGrid3X3 size="24px" />
-            <h1 className="my-grid-text">Posts</h1>
+          <hr className="line" />
+          <div className="icon-heading-con">
+            <BsGrid3X3 className="posts-icon" />
+            <h1 className="posts-heading">Posts</h1>
           </div>
           {myProfileList.posts.length > 0 ? (
-            <ul className="my-profile-post-list">
-              {myProfileList.posts.map(eachItem => (
-                <li key={eachItem.id} className="my-profile-post-list-item">
-                  <img
-                    src={eachItem.image}
-                    alt="my post"
-                    className="my-profile-posts-img"
-                  />
-                </li>
-              ))}
-            </ul>
+            <div className="posts-container">
+              <ul className="ul">
+                {myProfileList.posts.map(eachItem => (
+                  <li
+                    key={eachItem.id}
+                    postsDetails={eachItem}
+                    className="list-item"
+                  >
+                    <img
+                      src={eachItem.image}
+                      alt="my post"
+                      className="post-image"
+                    />
+                  </li>
+                ))}
+              </ul>
+            </div>
           ) : (
-            <div>
-              <BiCamera />
-              <h1>No Posts</h1>
+            <div className="no-posts-display">
+              <div className="icon-con">
+                <BiCamera className="no-posts-icon" />
+              </div>
+              <h1 className="no-posts-para">No Posts</h1>
             </div>
           )}
         </div>
