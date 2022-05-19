@@ -97,9 +97,7 @@
   height: 60px;
   width: 60px;
   border-radius: 55px;
-  /* border: 0px solid #ed587b #e20337 100% #c60188 100% #7700c3 100%;
- 
-  border-color: linear-gradient(#e20337 100% #c60188 100% #7700c3 100%); */
+
   display: flex;
   justify-content: center;
   align-items: center;
@@ -109,8 +107,7 @@
     height: 90px;
     width: 90px;
     border-radius: 55px;
-    /* border: 0px solid #ed587b;
-    border-color: linear-gradient(to right, #e20337, #c60188, #7700c3); */
+
     display: flex;
     justify-content: center;
     align-items: center;
